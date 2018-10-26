@@ -10,15 +10,9 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <div>
-            <p>Logo</p>
-        </div>
-        <div>
-            <a href="language.php" class="enter">Play</a>
-        </div>
-        <div>
-            <a href="loginform.php">Login</a>/<a href="registerform.php">Register</a>
-        </div>
-        <p>Blah blha lbadhvdofjds</p>
+        <?php
+        // put your code here
+        dcs
+        ?>
     </body>
 </html>
