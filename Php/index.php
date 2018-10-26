@@ -19,6 +19,5 @@ and open the template in the editor.
         <div>
             <a href="loginform.php">Login</a>/<a href="registerform.php">Register</a>
         </div>
-        <p>Blah blha lbadhvdofjds</p>
     </body>
 </html>
