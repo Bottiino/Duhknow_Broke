@@ -19,6 +19,6 @@ and open the template in the editor.
         <div>
             <a href="loginform.php">Login</a>/<a href="registerform.php">Register</a>
         </div>
-        <p>aoife smelly hashtag</p>
+        <p>blah</p>
     </body>
 </html>
