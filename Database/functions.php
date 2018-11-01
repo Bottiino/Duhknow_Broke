@@ -1,5 +1,5 @@
 <?php
-function getCategorys()
+function getWordsFromCategory($categoryID)
     {        
         global $db;
         
@@ -12,7 +12,7 @@ function getCategorys()
 
         return $categories;
     }
-function getWordsCategory($categoryID)
+function getCategory()
     {        
         global $db;
         
@@ -23,4 +23,17 @@ function getWordsCategory($categoryID)
         $statement->closeCursor();
 
         return $wordList;
+    }
+    function getEightWords($categoryID)
+    {        
+        global $db;
+        
+        $getEight = "SELECT * FROM words JOIN word_wc on words.words_id = word_wc.words_id WHERE wc_id = :categoryID ORDER BY RANDOM() LIMIT 8";
+        $statement = $db->prepare($getEight);     
+        $statement->bindValue(':categoryID', $categoryID); 
+        $statement->execute();
+        $eightWords = $statement->fetch();
+        $statement->closeCursor();
+
+        return $eightWords;
     }
