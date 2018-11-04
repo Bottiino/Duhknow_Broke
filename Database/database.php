@@ -1,12 +1,5 @@
 <?php
-    $dsn = 'mysql:host=localhost;dbname=duhknow';
-    $username = 'root';
-    $password = '';
-
-    try {
-        $db = new PDO($dsn, $username, $password);
-    } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        die($error_message);
-    }
+    $conn_string = "host=localhost port=5432 dbname=duhknow user=postgres password=password";
+    //Password is whatever you set you psql password to be
+    $dbconn = pg_connect($conn_string);
 ?>
