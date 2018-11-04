@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+    include("../Database/database.php");
+?>
+
 <html>
     <head>
         <meta charset="UTF-8">
