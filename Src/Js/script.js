@@ -5,7 +5,7 @@ $(function () {
     var tiles_selected = 0;
     var round = 0;
 
-    setTimeout(newBoard, 4000);
+    setTimeout(newBoard, 3000);
 
     Array.prototype.shuffle = function(){
         var i = this.length, j, temp;
@@ -16,9 +16,28 @@ $(function () {
             this[i] = temp;
         }
     }
+    
+    function getEightWords(){
+        jQuery.ajax({
+            type: "POST",
+            url: '../Database/functions.php',
+            dataType: 'json',
+            data: {functionname: 'getEightWordsFrench', argument: 1},
+
+            success: function (data) {
+                return data;
+            }
+        });
+    }
 
     function newBoard(){
-        var topic_words = ['A','B','C','D','E','F','G','H'];
+        
+        var topic_words = getEightWords();
+        var b;
+        foreach(b in topic_words)
+        {
+            
+        }
 
         var rand = Math.floor((Math.random() * 8));
         var centreCard = topic_words[rand];
@@ -31,11 +50,11 @@ $(function () {
         for(var i = 0; i < 8; i++){
             if(j != 4)
             {
-                output += '<div id="tile_'+i+'" class="tile out_tile">' + topic_words[i] + '</div>';
+                output += '<div class="tile out_tile"><div class="tileText">' + topic_words[i] + '</div></div>';
             }
             else
             {
-                output += '<div id="centre_tile" class="tile col-lg-4 col-md-4 col-sm-4 col-xs-4">' + centreCard + '</div>';
+                output += '<div id="centre_tile" class="tile"><div class="tileText">' + centreCard + '</div></div>';
                 i--;
             }
             j++;
@@ -44,44 +63,59 @@ $(function () {
     }
     
     var timeLeft = "Ready";
-    var elem = document.getElementById('countDown');
+    var body = document.getElementById('countdown');
+    var text = document.getElementById('countdownText');
+    countdown();
     var timerId = setInterval(countdown, 1000);
     
     function countdown(){
-        elem.innerHTML = timeLeft;
+        text.innerHTML = timeLeft;
         
         if(timeLeft === "Done"){
             clearTimeout(timerId);
-            elem.style.display = "none";
+            body.style.background = "rgb(1,1,1,0)";
+            body.style.display = "none";
         }
         else if(timeLeft === "Go!"){            
             timeLeft = "Done";
+            body.style.background = "#5BB85D";
         }
         else if(timeLeft === "Set"){
             timeLeft = "Go!";
+            body.style.background = "#EFAD4D";
         }
         else{            
             timeLeft = "Set";
+            body.style.background = "#D9534E";
         }
     }    
+    
+    function show(id){
+        document.getElementById(id).style.display = "block";
+    }
+    setTimeout(function(){show("finScreen");}, 34000);
+    setTimeout(function(){show("timesUp");}, 34000);
 
     function selectedTile(tile,centreCard)
     {        
-        var val = tile.text();
+        var val = tile.text();  
         if(val === centreCard)
         {
             tile.css('background', '#1F1');
             round++;
             setTimeout(newBoard, 250);
             $('div#round').html("Round " + round);
+            //call function here
         }
         else
         {
             tile.css('background', '#F11');
             setTimeout(newBoard,250);
+            //call function here
         }
-    }
+    }    
     
+    //Create funtion here
     
     setTimeout(timesUp, 34000);
     function timesUp(){

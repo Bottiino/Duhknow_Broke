@@ -1,4 +1,14 @@
+<?php 
+    include '../Database/database.php';
+    include '../Database/functions.php';
+
+    $eight = getEightWordsFrench(1);  
+?>
 <!DOCTYPE html>
+<?php
+    include("../Database/database.php");
+?>
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -11,10 +21,16 @@
         <link href="../Src/Css/GameCss.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <div id="countDown"></div>
+        <div id="countdown">
+            <div id="countdownText"></div>
+        </div>
+        
         <div id="finScreen"></div>
         <div id="timesUp" class="box bounce-4"></div>
-        <div id="progress" class="progress-bar-striped pro" role="progressbar" aria-valuenow="0" aria-valuemax="100"></div>
+        
+        <div id="progressBarBox">
+            <div id="progress" class="progress-bar-striped pro" role="progressbar" aria-valuenow="0" aria-valuemax="100"></div>
+        </div>
         <div id="board"></div>
         <div id="round">Round 0</div>
     </body>
