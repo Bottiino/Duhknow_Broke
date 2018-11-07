@@ -1,6 +1,7 @@
 <?php
     $conn_string = "host=localhost port=5432 dbname=Duhknow user=postgres password=password";
-    //Password is whatever you set you psql password to be
+    //Password
+    // is whatever you set you psql password to be
     $db = pg_connect($conn_string);
     if(!$db)
     {
