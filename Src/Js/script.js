@@ -29,6 +29,32 @@ $(function () {
             }
         });
     }
+    //Function to get name 
+//    function getCategorys(){
+//        jQuery.ajax({
+//            type: "POST",
+//            url: '../Database/functions.php',
+//            dataType: 'json',
+//            data: {functionname: 'getCategory', argument: 1},
+//
+//            success: function (data) {
+//                return data;
+//            }
+//        });
+//    }
+//    
+    //Function call for getting the id, english, french, irish, german, french and image for all words for use in dictionary
+//    function getWords(){
+//        jQuery.ajax({
+//            type: "POST",
+//            url: '../Database/functions.php',
+//            dataType: 'json',
+//            data: {functionname: 'getWords', argument: 1},
+//            success: function (data) {
+//                return data;
+//            }
+//       });
+//    }
 
     function newBoard(){
         
