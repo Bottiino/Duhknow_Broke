@@ -124,3 +124,19 @@ function getEightWords($categoryID, $language) {
         
     return $arr;
 }
+//Changing a word into another langauge
+function languageChange($word, $language)
+{
+    global $db;
+    
+    $getEight = "SELECT $language FROM words WHERE english = '$word' OR french = 'word' OR german = '$word' OR irish = '$word' OR spanish = '$word'";
+    $result = pg_query($db, $getEight);
+    
+    $arr = array();
+    while($line = pg_fetch_array($result))
+    {        
+        array_push($arr, $line[$language]);
+    }
+        
+    return $arr;
+}
