@@ -12,17 +12,17 @@
 //
 //        return $categories;
 //    }
-function getCategorys()
+
+function getCategorys($difficulty)
 {        
     global $db;
 
-    $getCategories = "SELECT wc_id, category_name FROM word_category";
+    $getCategories = "SELECT category_name FROM word_category WHERE difficulty = '$difficulty'";
     $result = pg_query($db, $getCategories);
     
     $arr = array();
     while($line = pg_fetch_array($result))
     {        
-        array_push($arr, $line["wc_id"]);
         array_push($arr, $line["category_name"]);
     }
         
